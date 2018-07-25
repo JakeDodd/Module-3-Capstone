@@ -1,7 +1,11 @@
 package com.techelevator.npgeek.Model.DAOs;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 
@@ -10,17 +14,30 @@ import com.techelevator.npgeek.Model.Objects.Park;
 public class JDBCParkDAO implements ParkDAO {
 
 	private JdbcTemplate jdbcTemplate;
-
-	@Override
-	public List<Park> getAllParks() {
-		
-		return null;
+	
+	@Autowired
+	public JDBCParkDAO(DataSource dataSource) {
+		this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 
 	@Override
-	public Park getParkByCode(int code) {
-		
-		return null;
+	public List<Park> getAllParks() {
+		List<Park> parksList = new ArrayList<Park>();
+		String sqlGetAllParks = "SELECT * FROM park;";
+		SqlRowSet result = jdbcTemplate.queryForRowSet(sqlGetAllParks);
+		while(result.next()) {
+			parksList.add(mapRowToPark(result));
+		}
+		return parksList;
+	}
+
+	@Override
+	public Park getParkByCode(int parkCode) {
+		Park park;
+		String sqlGetParkByCode = "SELECT * FROM park WHERE parkcode = ?;";
+		SqlRowSet result = jdbcTemplate.queryForRowSet(sqlGetParkByCode, parkCode);
+		park = mapRowToPark(result);
+		return park;
 	}
 	
 	private Park mapRowToPark(SqlRowSet row) {
