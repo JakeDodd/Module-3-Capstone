@@ -8,9 +8,10 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Component;
 
 import com.techelevator.npgeek.Model.Objects.Park;
-
+@Component
 public class JDBCParkDAO implements ParkDAO {
 
 	private JdbcTemplate jdbcTemplate;
@@ -33,10 +34,12 @@ public class JDBCParkDAO implements ParkDAO {
 
 	@Override
 	public Park getParkByCode(String parkCode) {
-		Park park;
+		Park park = new Park();
 		String sqlGetParkByCode = "SELECT * FROM park WHERE parkcode = ?;";
 		SqlRowSet result = jdbcTemplate.queryForRowSet(sqlGetParkByCode, parkCode);
-		park = mapRowToPark(result);
+		while(result.next()) {
+			park = mapRowToPark(result);
+		}
 		return park;
 	}
 	

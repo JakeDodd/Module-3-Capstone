@@ -8,9 +8,10 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Component;
 
 import com.techelevator.npgeek.Model.Objects.DailyWeather;
-
+@Component
 public class JDBCWeatherDAO implements WeatherDAO {
 
 	private JdbcTemplate jdbcTemplate;
@@ -36,7 +37,7 @@ public class JDBCWeatherDAO implements WeatherDAO {
 		dailyWeather.setDay(result.getInt("fivedayforecastvalue"));
 		dailyWeather.setLowTemp(result.getInt("low"));
 		dailyWeather.setHighTemp(result.getInt("high"));
-		dailyWeather.setForecast(result.getString("forecast"));
+		dailyWeather.setForecast(result.getString("forecast").replace(" ",""));
 		return dailyWeather;
 	}
 }

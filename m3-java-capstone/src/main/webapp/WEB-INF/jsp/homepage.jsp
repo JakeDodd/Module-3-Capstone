@@ -5,7 +5,7 @@
 <html>
 <head>
 <link rel = "stylesheet" href = "css/site.css"/>
-<title>Home</title>
+<title>Home Page</title>
 
 </head>
 <body>
@@ -23,7 +23,18 @@
 <section id="main-content">
 
 	<h1>You are on the homepage</h1>
-
+	<div>
+	<c:forEach var = "park" items = "${parkList}">
+	
+		<div>
+		<a href= "/m3-java-capstone/detailpage?parkcode=${park.parkCode}"><img src = "img/parks/${park.parkCode.toLowerCase()}.jpg"/></a>
+		</div>
+		<div>
+		<div>${park.parkName}</div>
+		<div>${park.description}</div>
+		</div>
+	</c:forEach>
+	</div>
 
 </section>
 </body>
