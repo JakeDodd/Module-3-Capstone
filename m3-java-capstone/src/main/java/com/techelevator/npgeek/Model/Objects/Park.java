@@ -17,6 +17,7 @@ public class Park {
 	private String description;
 	private int entryFee;
 	private int numberOfAnimalSpecies;
+	
 	public String getParkCode() {
 		return parkCode;
 	}
