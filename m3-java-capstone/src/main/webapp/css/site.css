@@ -1,0 +1,200 @@
+
+
+body {
+	width: 100%;
+	background-color: #212121;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
+		sans-serif;
+}
+
+body, header, nav {
+	margin: 0px;
+}
+
+header {
+	background-color: #0099CC;
+	color: white;
+	padding: 10px 10px;
+}
+
+nav {
+	background-color: #8DC63F;
+	margin-bottom: 20px;
+	padding: 5px;
+	height: 50px;
+}
+
+nav ul {
+	float: left;
+}
+
+nav li {
+	list-style-type: none;
+	color: white;
+	margin-left: 25px;
+	margin-bottom: 10px;
+	font-size: 1.3em;
+	float: left;
+}
+
+nav li a {
+	color: white;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+nav li a:hover {
+	text-decoration: underline;
+}
+
+section {
+	clear: both;
+	display: block;
+	width: 80%;
+	margin: 20px auto;
+	vertical-align: top;
+	text-align: center;
+	min-height: 450px;
+	background-color: #FFF;
+	border-radius: 7px;
+}
+
+
+div{
+	font-size:15px;
+}
+
+td div{
+	font-size:12px;
+	
+}
+
+.toyInfo{
+	text-align: left;
+	display:flex;
+	margin-left:5%;
+	margin-right:5%;
+}
+
+.toyImageContainer{
+	display: inline-block;
+	width: 25%;
+	padding:25px;
+	text-align:left;
+	height: 100%;
+	margin:25px;
+	
+}
+
+.toyImage{
+	height:75%;
+	
+}
+
+.toyDetails{
+	display: inline-block;
+	margin: 25px;
+	max-width:25%;
+	text-align:left;
+	height: 100%;
+}
+
+.productName{
+	font-weight:bold;
+	font-size:25px;
+}
+
+.bestSeller{
+	font-weight:bold;
+	color:red;
+}
+
+
+.rating{
+	max-width:50%;
+	max-height:50%;
+}
+
+tr{
+	max-width: 1368px;
+}
+
+hr{
+	width:90%;
+}
+.price{
+	font-size: 18px;
+	color: #be0013;
+}
+
+
+#tableContainer{
+	max-width:99%;
+	text-align:center;
+}
+
+#productTable{
+	table-layout:fixed;
+	width:100%;
+	border-collapse:collapse;
+}
+
+thead{
+	max-width:100%;
+}
+tbody{
+	max-width:100%;
+}
+tr{
+	max-width:100%;
+}
+
+img{
+	max-width:100%;
+}
+
+.darkRow{
+	background-color:#c5c3c7;
+}
+
+.column1{
+	width:10%;
+	background-color:#FFF;
+	font-weight:600;
+}
+
+.toyInfo{
+	text-align: left;
+	display:flex;
+	margin-left:5%;
+	margin-right:5%;
+}
+	
+.toyInfoTile{
+	display:flex;
+	flex-direction:column;
+	width:33.33%;
+}
+
+.toyDetailsTile{
+	display: block;
+	margin: 25px;
+	max-width:100%;
+	text-align:center;
+	height: 100%;
+}
+
+#main-content-tile{
+	clear: both;
+	display: flex;
+	flex-direction:row;
+	flex-wrap:wrap;
+	width: 80%;
+	margin: 20px auto;
+	vertical-align: top;
+	text-align: center;
+	min-height: 450px;
+	background-color: #FFF;
+	border-radius: 7px;
+	padding: 10px;
+}
