@@ -23,7 +23,7 @@ public class JDBCParkDAO implements ParkDAO {
 	@Override
 	public List<Park> getAllParks() {
 		List<Park> parksList = new ArrayList<Park>();
-		String sqlGetAllParks = "SELECT * FROM park;";
+		String sqlGetAllParks = "SELECT * FROM park ORDER BY parkname;";
 		SqlRowSet result = jdbcTemplate.queryForRowSet(sqlGetAllParks);
 		while(result.next()) {
 			parksList.add(mapRowToPark(result));
@@ -32,7 +32,7 @@ public class JDBCParkDAO implements ParkDAO {
 	}
 
 	@Override
-	public Park getParkByCode(int parkCode) {
+	public Park getParkByCode(String parkCode) {
 		Park park;
 		String sqlGetParkByCode = "SELECT * FROM park WHERE parkcode = ?;";
 		SqlRowSet result = jdbcTemplate.queryForRowSet(sqlGetParkByCode, parkCode);

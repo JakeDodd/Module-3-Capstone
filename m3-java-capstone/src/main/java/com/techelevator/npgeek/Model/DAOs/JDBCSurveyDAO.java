@@ -1,7 +1,7 @@
 package com.techelevator.npgeek.Model.DAOs;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 import javax.sql.DataSource;
 
@@ -21,14 +21,14 @@ public class JDBCSurveyDAO implements SurveyDAO {
 	}
 
 	@Override
-	public List<Survey> getAllSurveys() {
-		List<Survey> allSurveys = new ArrayList<Survey>();
-		String sqlGetAllSurveys = "SELECT * FROM survey_result;";
-		SqlRowSet result = jdbcTemplate.queryForRowSet(sqlGetAllSurveys);
-		while (result.next()) {
-			allSurveys.add(mapRowToSurvey(result));
+	public Map<String, Integer> getParkFavorites() {
+		Map<String, Integer> favoriteParks = new LinkedHashMap<String, Integer>();
+		String sqlGetFavoriteParks = "SELECT count(*), parkcode FROM survey_result GROUP BY parkcode ORDER BY count DESC;";
+		SqlRowSet result = jdbcTemplate.queryForRowSet(sqlGetFavoriteParks);
+		while(result.next()) {
+			favoriteParks.put("parkcode", Integer.parseInt("count"));
 		}
-		return allSurveys;
+		return favoriteParks;
 	}
 
 	@Override

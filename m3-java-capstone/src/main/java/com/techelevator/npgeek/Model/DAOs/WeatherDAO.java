@@ -6,5 +6,5 @@ import com.techelevator.npgeek.Model.Objects.DailyWeather;
 
 public interface WeatherDAO {
 
-	public List<DailyWeather> getFiveDayForecastByPark(int code);
+	public List<DailyWeather> getFiveDayForecastByPark(String code);
 }

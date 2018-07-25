@@ -1,11 +1,11 @@
 package com.techelevator.npgeek.Model.DAOs;
 
-import java.util.List;
+import java.util.Map;
 
 import com.techelevator.npgeek.Model.Objects.Survey;
 
 public interface SurveyDAO {
 
-	public List<Survey> getAllSurveys();
+	public Map<String, Integer> getParkFavorites();
 	public void saveSurvey(Survey survey);
 }
