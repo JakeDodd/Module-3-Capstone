@@ -11,7 +11,7 @@
 <body>
 	<header>
 		<img alt="npgeek logo" src="img/logo.png">
-		<!-- <h2>National Park Geek</h2> -->
+	
 	</header>
 	<nav>
 		<ul>

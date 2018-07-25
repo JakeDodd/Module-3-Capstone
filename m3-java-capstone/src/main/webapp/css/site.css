@@ -12,7 +12,7 @@ body, header, nav {
 }
 
 header {
-	background-color: #0099CC;
+	background-color: #8ad9fa;
 	color: white;
 	padding: 10px 10px;
 }
@@ -150,7 +150,7 @@ tr{
 }
 
 img{
-	max-width:100%;
+	max-width:50%;
 }
 
 .darkRow{
@@ -197,4 +197,8 @@ img{
 	background-color: #FFF;
 	border-radius: 7px;
 	padding: 10px;
+}
+
+.logo{
+	max-width:50%;
 }
