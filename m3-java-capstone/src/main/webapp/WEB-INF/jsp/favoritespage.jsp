@@ -14,7 +14,7 @@
 			<ul>
 				<li><a href="/m3-java-capstone/homepage">Home</a></li>
 				<li><a href="/m3-java-capstone/surveypage">Survey</a></li>
-			</ul>
+			
 	
 		</nav>
 	<section id="main-content">

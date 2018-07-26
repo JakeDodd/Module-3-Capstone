@@ -39,23 +39,49 @@ public class HomeController {
 		parkList = parkDao.getAllParks();
 		request.setAttribute("parkList", parkList);
 		return "homepage";
+		
 	}
 	
 	@RequestMapping(path = "/detailpage", method = RequestMethod.GET)
 	public String showDetailPage(HttpServletRequest request) {
 		String parkCode = request.getParameter("parkcode");
 		Park park = parkDao.getParkByCode(parkCode);
-		request.setAttribute("park", park);
+		
+		request.getParameter("tempUnit");
+		
 		
 		List<DailyWeather> fiveDayForecast = weatherDao.getFiveDayForecastByPark(parkCode);
-		request.setAttribute("fiveDayForecast", fiveDayForecast);
+		
 		
 		HttpSession session = request.getSession();
-		session.setAttribute("tempUnit", request.getParameter("tempUnit"));
+		
+		session.setAttribute("park", park);
+		session.setAttribute("fiveDayForecast", fiveDayForecast);
 		
 		return "detailpage";
 	}
 
+	@RequestMapping(path = "/detailpageCelcius", method = RequestMethod.GET)
+	public String showDetailPageCelcius(HttpServletRequest request) {
+//		String parkCode = request.getParameter("parkcode");
+//		Park park = parkDao.getParkByCode(parkCode);
+//		request.setAttribute("park", park);
+//		request.getParameter("tempUnit");
+		
+		
+//		List<DailyWeather> fiveDayForecast = weatherDao.getFiveDayForecastByPark(parkCode);
+//		request.setAttribute("fiveDayForecast", fiveDayForecast);
+		
+		HttpSession session = request.getSession();
+//		session.setAttribute("tempUnit", request.getParameter("tempUnit"));
+		session.setAttribute("tempUnit", request.getParameter("tempUnit"));
+		session.getAttribute("park");
+		session.getAttribute("fiveDatForecast");
+		
+		return "detailpage";
+	}
+	
+	
 	@RequestMapping(path = "/surveypage", method = RequestMethod.GET)
 	public String showSurveyPage(HttpServletRequest request) {
 		List<Park> parkList = new ArrayList<Park>();

@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,11 +12,17 @@
 		
 	</header>
 	<nav>
+	<form method = "GET" action = "detailpageCelcius">
 		<ul>
 			<li><a href="/m3-java-capstone/homepage">Home</a></li>
 			<li><a href="/m3-java-capstone/surveypage">Survey</a></li>
+			<li><label for = "tempUnit">Temp Unit: F</label>
+			<input type = "radio" name = "tempUnit" value = "F">
+			<label for = "tempUnit">C</label>
+			<input type = "radio" name = "tempUnit" value = "C"><li>
+			<li><input type = "submit" value = "Apply changes"><li>
 		</ul>
-
+	</form>
 	</nav>
 <section id="main-content">
 	<div> <img src = "img/parks/${park.parkCode.toLowerCase()}.jpg"></div>
@@ -72,7 +79,22 @@
 				</c:choose>
 				
 				<div><img src = "img/weather/${day.forecast}.png"></div>
-				<div>High<span>${day.highTemp}</span>Low<span>${day.lowTemp}</span></div>
+				<c:set var = "hiTemp" value = "${day.highTemp}"/>
+				<c:set var = "lowTemp" value = "${day.lowTemp}"/>
+				<c:set var = "tempSuffix" value = "F"/>
+				
+				<c:choose>
+					<c:when test = "${tempUnit == 'C'}">
+						<c:set var = "hiTemp" value = "${(day.highTemp - 32) * (5/9)}"/>
+						<c:set var = "lowTemp" value = "${(day.lowTemp - 32) * (5/9)}"/>
+						<c:set var = "tempSuffix" value = "C"/>
+						
+						<fmt:parseNumber var = "hiTemp" integerOnly = "true" type = "number" value = "${hiTemp}"/>
+						<fmt:parseNumber var = "lowTemp" integerOnly = "true" type = "number" value = "${lowTemp}"/>
+					</c:when>
+				</c:choose>
+				
+				<div>High<span>${hiTemp}${tempSuffix}</span>Low<span>${lowTemp}${tempSuffix}</span></div>
 				<div>${forecastAdvisory}</div>
 				<div>${tempAdvisoryHighLow}</div>
 				<c:if test = "${tempAdvisoryRange.length()>0}">
