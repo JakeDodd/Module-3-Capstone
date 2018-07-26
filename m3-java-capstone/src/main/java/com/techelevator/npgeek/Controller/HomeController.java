@@ -78,12 +78,10 @@ public class HomeController {
 	
 	@RequestMapping(path = "/favoritespage", method=RequestMethod.GET) 
 	public String showFavoritesPage(HttpServletRequest request) {
-		Map<String, Integer> surveyCount = new LinkedHashMap<String, Integer>();
+		
 		Map<Park, Integer> favoriteParks = new LinkedHashMap<Park, Integer>();
-		surveyCount = surveyDao.getParkFavorites();
-		for(Map.Entry<String, Integer> entry : surveyCount.entrySet()) {
-			favoriteParks.put(parkDao.getParkByCode(entry.getKey()), entry.getValue());
-		}
+		favoriteParks = surveyDao.getParkFavorites();
+		
 		request.setAttribute("favoriteParks", favoriteParks);
 		return "favoritespage";
 	}

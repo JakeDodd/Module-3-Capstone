@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import com.techelevator.npgeek.Model.Objects.Park;
 import com.techelevator.npgeek.Model.Objects.Survey;
 @Component
 public class JDBCSurveyDAO implements SurveyDAO {
@@ -22,12 +23,15 @@ public class JDBCSurveyDAO implements SurveyDAO {
 	}
 
 	@Override
-	public Map<String, Integer> getParkFavorites() {
-		Map<String, Integer> favoriteParks = new LinkedHashMap<String, Integer>();
-		String sqlGetFavoriteParks = "SELECT count(*), parkcode FROM survey_result GROUP BY parkcode ORDER BY count DESC;";
+	public Map<Park, Integer> getParkFavorites() {
+		Map<Park, Integer> favoriteParks = new LinkedHashMap<Park, Integer>();
+		String sqlGetFavoriteParks = "SELECT count(*), survey_result.parkcode, park.parkname FROM survey_result "
+				+ "LEFT JOIN park ON survey_result.parkcode = park.parkcode "
+				+ "GROUP BY survey_result.parkcode, park.parkname ORDER BY count DESC;";
 		SqlRowSet result = jdbcTemplate.queryForRowSet(sqlGetFavoriteParks);
 		while(result.next()) {
-			favoriteParks.put("parkcode", Integer.parseInt("count"));
+			Park favPark = mapRowToFavoritePark(result);
+			favoriteParks.put(favPark, result.getInt("count"));
 		}
 		return favoriteParks;
 	}
@@ -40,14 +44,11 @@ public class JDBCSurveyDAO implements SurveyDAO {
 
 	}
 
-	private Survey mapRowToSurvey(SqlRowSet result) {
-		Survey survey = new Survey();
-		survey.setParkCode(result.getString("parkcode"));
-		survey.setEmail(result.getString("emailaddress"));
-		survey.setState(result.getString("state"));
-		survey.setActivityLevel(result.getString("activitylevel"));
-		return survey;
-
+	private Park mapRowToFavoritePark(SqlRowSet result) {
+		Park favPark = new Park();
+		favPark.setParkCode(result.getString("parkcode"));
+		favPark.setParkName(result.getString("parkname"));
+		return favPark;
 	}
 
 }
