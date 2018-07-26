@@ -57,8 +57,12 @@ public class HomeController {
 	}
 
 	@RequestMapping(path = "/surveypage", method = RequestMethod.GET)
-	public String showSurveyPage() {
+	public String showSurveyPage(HttpServletRequest request) {
+		List<Park> parkList = new ArrayList<Park>();
+		parkList = parkDao.getAllParks();
+		request.setAttribute("parkList", parkList);
 		return "surveypage";
+		
 	}
 	
 	@RequestMapping(path = "/surveypage", method = RequestMethod.POST)
