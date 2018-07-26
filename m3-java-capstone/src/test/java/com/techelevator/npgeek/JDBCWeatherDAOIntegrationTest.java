@@ -11,15 +11,15 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.jdbc.datasource.SingleConnectionDataSource;
 
-import com.techelevator.npgeek.Model.DAOs.JDBCParkDAO;
-import com.techelevator.npgeek.Model.Objects.Park;
+import com.techelevator.npgeek.Model.DAOs.JDBCWeatherDAO;
+import com.techelevator.npgeek.Model.Objects.DailyWeather;
 
-public class JDBCParkDAOIntegrationTest {
-
-	private static SingleConnectionDataSource dataSource;
-	private JDBCParkDAO parkDao;
-	private static final String TEST_CODE = "GNP";
+public class JDBCWeatherDAOIntegrationTest {
 	
+	private static SingleConnectionDataSource dataSource;
+	private JDBCWeatherDAO weatherDao;
+	private static final String TEST_CODE = "GNP";
+
 	@BeforeClass
 	public static void setupDataSource() {
 		dataSource = new SingleConnectionDataSource();
@@ -34,7 +34,7 @@ public class JDBCParkDAOIntegrationTest {
 	
 	@Before
 	public void setup() {
-		parkDao = new JDBCParkDAO(dataSource);
+		weatherDao = new JDBCWeatherDAO(dataSource);
 	}
 	
 	@After
@@ -43,18 +43,10 @@ public class JDBCParkDAOIntegrationTest {
 	}
 	
 	@Test
-	public void returns_list_of_parks() {
-		List<Park> parks = parkDao.getAllParks();
+	public void returns_list_of_five_day_forecast() {
+		List<DailyWeather> forecast = weatherDao.getFiveDayForecastByPark(TEST_CODE);
 		
-		Assert.assertNotNull(parks);
-		Assert.assertEquals(10, parks.size());
-	}
-	
-	@Test
-	public void return_park_when_given_park_code() {
-		Park testPark = parkDao.getParkByCode(TEST_CODE);
-		
-		Assert.assertNotNull(testPark);
-		Assert.assertEquals("Glacier National Park", testPark.getParkName());
+		Assert.assertNotNull(forecast);
+		Assert.assertEquals(5, forecast.size());
 	}
 }
