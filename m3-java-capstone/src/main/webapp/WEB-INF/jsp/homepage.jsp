@@ -17,6 +17,10 @@
 		<ul>
 			<li><a href="/m3-java-capstone/homepage">Home</a></li>
 			<li><a href="/m3-java-capstone/surveypage">Survey</a></li>
+			<li><label for = "tempUnit">Temp Unit: F</label>
+			<input type = "radio" name = "tempUnit" value = "F">
+			<label for = "tempUnit">C</label>
+			<input type = "radio" name = "tempUnit" value = "C"><li>
 		</ul>
 
 	</nav>

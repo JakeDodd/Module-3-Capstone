@@ -38,27 +38,49 @@
 	<div>
 		<c:forEach var = "day" items = "${fiveDayForecast}">
 			<div class = "dailyWeather">
-				<div><img src = "img/weather/${day.forecast}.png"></div>
-				<p>${day.forecast}</p>
-				<div>High<span>${day.highTemp}</span>Low<span>${day.lowTemp}</span></div>
+			<c:set var = "tempAdvisoryHighLow" value = " "/>
+			<c:choose>
+				<c:when test = "${day.highTemp > 75}">
+					<c:set var = "tempAdvisoryHighLow" value = "Bring an extra gallon of water"/>
+				</c:when>
+				<c:when test = "${day.lowTemp < 20}">
+					<c:set var = "tempAdvisoryHighLow" value = "Frigid temperatures expected, be sure to minimize exposed skin and time outdoors"/>
+				</c:when>
+			</c:choose>
+			<c:set var = "tempAdvisoryRange" value = ""/>
+			<c:choose>
+				<c:when test = "${day.highTemp - day.lowTemp > 20}">
+					<c:set var = "tempAdvisoryRange" value = "Wear breathable layers"/>
+				</c:when>
+			</c:choose>
+			
+			<c:set var = "forecastAdvisory" value = ""/>
+			
 				<c:choose>
 				<c:when test = "${day.forecast  == 'snow'}">
-					<div>Pack snowshoes</div>
+					<c:set var = "forecastAdvisory" value = "Pack snowshoes" />
 				</c:when>
 				<c:when test = "${day.forecast  == 'rain'}">
-					<div>Pack rain gear and wear waterproof shoes</div>
+					<c:set var = "forecastAdvisory" value = "Pack rain gear and wear waterproof shoes" />
 				</c:when>
 				<c:when test = "${day.forecast  == 'thunderstorms'}">
-					<div>Seek shelter and avoid hiking on exposed ridges</div>
+				<c:set var = "forecastAdvisory" value = "Seek shelter and avoid hiking on exposed ridges" />
 				</c:when>
 				<c:when test = "${day.forecast  == 'sunny'}">
-					<div>Pack sunblock</div>
+					<c:set var = "forecastAdvisory" value = "Pack sunblock" />
 				</c:when>
-				<c:when test = "${day.forecast  == 'partlycloudy'}">
-					<div></div>
-				</c:when>
-				
 				</c:choose>
+				
+				<div><img src = "img/weather/${day.forecast}.png"></div>
+				<div>High<span>${day.highTemp}</span>Low<span>${day.lowTemp}</span></div>
+				<div>${forecastAdvisory}</div>
+				<div>${tempAdvisoryHighLow}</div>
+				<c:if test = "${tempAdvisoryRange.length()>0}">
+					<div>${tempAdvisoryRange}</div>
+				</c:if>
+				
+				
+				
 				<br>
 		
 			

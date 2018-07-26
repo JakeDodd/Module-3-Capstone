@@ -18,13 +18,14 @@
 	
 		</nav>
 	<section id="main-content">
+	<c:forEach var = "entry" items = "${favoriteParks}">
 	<div>
-		<c:forEach var = "park" items = "${favoriteParks}">
-			<div><img src = "img/parks/${park.key.parkCode.toLowerCase()}.jpg"/></div>
-			<div>${park.key.parkName}</div>
-			<div>${park.value}</div>
-		</c:forEach>
+		
+			<div><img src = "img/parks/${entry.key.parkCode.toLowerCase()}.jpg"/></div>
+			<div>${entry.key.parkName}</div>
+			<div>${entry.value}</div>
 	</div>
+		</c:forEach>
 	
 	
 	</section>
