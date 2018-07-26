@@ -33,6 +33,9 @@ public class HomeController {
 	@Autowired
 	private SurveyDAO surveyDao;
 	
+	private static final String CELSIUS = "C";
+	private static final String FAHRENHEIT = "F";
+	
 	@RequestMapping(path = "/homepage", method = RequestMethod.GET)
 	public String showHomePage(HttpServletRequest request) {
 		List<Park> parkList = new ArrayList<Park>();
@@ -74,7 +77,7 @@ public class HomeController {
 		
 		HttpSession session = request.getSession();
 //		session.setAttribute("tempUnit", request.getParameter("tempUnit"));
-		session.setAttribute("tempUnit", request.getParameter("tempUnit"));
+		session.setAttribute("tempUnit", checkForCorrectTempUnit(request.getParameter("tempUnit")));
 		session.getAttribute("park");
 		session.getAttribute("fiveDatForecast");
 		
@@ -110,6 +113,16 @@ public class HomeController {
 		
 		request.setAttribute("favoriteParks", favoriteParks);
 		return "favoritespage";
+	}
+	
+	private String checkForCorrectTempUnit(String tempUnit) {
+		String result = null;
+		if(tempUnit.equalsIgnoreCase(CELSIUS)) {
+			result = CELSIUS;
+		} else {
+			result = FAHRENHEIT;
+		}
+		return result;
 	}
 	
 }
