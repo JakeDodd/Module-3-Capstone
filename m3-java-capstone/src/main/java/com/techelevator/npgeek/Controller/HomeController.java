@@ -7,7 +7,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.techelevator.npgeek.Model.DAOs.ParkDAO;
@@ -34,7 +33,7 @@ public class HomeController {
 	
 	@Autowired
 	private WeatherDAO weatherDao;
-	
+	  
 	@Autowired
 	private SurveyDAO surveyDao;
 	
@@ -102,13 +101,7 @@ public class HomeController {
 			flash.addFlashAttribute(BindingResult.MODEL_KEY_PREFIX + "survey",result);
 			return "redirect:/surveypage";
 		}
-//	public String postSurveyPage(@RequestParam String parkcode, @RequestParam String email, @RequestParam String state, @RequestParam String activitylevel) {
-//		Survey newSurvey = new Survey();
-//		newSurvey.setParkCode(parkcode);
-//		newSurvey.setEmail(email);
-//		newSurvey.setState(state);
-//		newSurvey.setActivityLevel(activitylevel);
-//		surveyDao.saveSurvey(newSurvey);
+
 		flash.addFlashAttribute("message","You have successfully submitted a survey");
 		return "redirect:/favoritespage";
 	}

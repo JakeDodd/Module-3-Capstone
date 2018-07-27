@@ -77,7 +77,7 @@
 					<c:set var = "forecastAdvisory" value = "Pack sunblock" />
 				</c:when>
 				</c:choose>
-				
+				<div id = "today"></div>
 				<div><img src = "img/weather/${day.forecast}.png"></div>
 				<c:set var = "hiTemp" value = "${day.highTemp}"/>
 				<c:set var = "lowTemp" value = "${day.lowTemp}"/>

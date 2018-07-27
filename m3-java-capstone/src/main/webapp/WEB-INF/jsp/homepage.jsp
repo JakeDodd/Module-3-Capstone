@@ -25,11 +25,11 @@
 	<c:forEach var = "park" items = "${parkList}">
 		<div class = completeParkContainer>
 			<div class = "imageContainer">
-			<a href= "/m3-java-capstone/detailpage?parkcode=${park.parkCode}"><img src = "img/parks/${park.parkCode.toLowerCase()}.jpg"/></a>
+			<a  class = "parkImgHP"  href= "/m3-java-capstone/detailpage?parkcode=${park.parkCode}"><img  class = "parkImgHP" src = "img/parks/${park.parkCode.toLowerCase()}.jpg"/></a>
 			</div>
 			<div class = "detailsContainer">
-			<div><h2>${park.parkName}</h2></div>
-			<div>${park.description}</div>
+			<div><h1>${park.parkName}</h1></div>
+			<div class = "parkDescription">${park.description}</div>
 			</div>
 		</div>
 	</c:forEach>
