@@ -49,39 +49,50 @@ nav li a:hover {
 
 section {
 	clear: both;
-	display: block;
+
 	width: 90%;
 	margin: 20px auto;
 	vertical-align: top;
 	text-align: left;
 	min-height: 450px;
-	background-color: #FFF;
+	background-color: #eaefaf;
 	border-radius: 7px;
 	padding:25px;
+	display:flex;
+	flex-direction:column;
 }
 
 .completeParkContainer{
-	display:inline-block;
+	display:flex;
+	flex-direction:row;
 	height:300px;
+	margin:30px;
+	margin-bottom:50px;
 }
 
 .imageContainer{
-	display:inline-block;
+	display:flex;
+	margin-right:40px;
 }
 
 .detailsContainer{
-	display:inline-block;
+	display:flex;
+	flex-direction:column;
 	max-width:50%;
+}
+
+.parkDescription{
+	font-size:20px;
 }
 
 div{
 	font-size:15px;
 }
 
-img{
-	max-width:50%;
+.parkImgHP{
+	height: 100%;
+	width: 100%;
 	border-radius: 7px;
-	
 }
 
 .logo{
