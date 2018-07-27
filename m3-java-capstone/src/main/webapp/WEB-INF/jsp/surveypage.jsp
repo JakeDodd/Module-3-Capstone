@@ -10,7 +10,7 @@
 </head>
 <body>
 	<header>
-		<img alt="npgeek logo" src="img/logo.png">
+		<img class="logo" alt="npgeek logo" src="img/logo.png">
 	
 	</header>
 	<nav>
@@ -21,8 +21,10 @@
 
 	</nav>
 <section id="main-content">
+<h1>Survey</h1>
+<h3>Vote for your favorite national park!</h3>
 	<form:form method = "POST" action = "surveypage" modelAttribute ="survey">
-		<div>
+		<div class = "question">
 			<form:label for = "favoritePark" path = "parkCode">Favorite National Park</form:label>
 			<form:select name = "parkcode" path = "parkCode">
 			
@@ -34,12 +36,12 @@
 			<form:errors path = "parkCode" cssClass="error"/>
 		</div>
 	
-	<div><form:label for = "email" path ="email" > Your email</form:label>
+	<div class = "question"><form:label for = "email" path ="email" > Your email</form:label>
 	<form:input name = "email" type = "text" placeholder = "email" path = "email"/>
 	<form:errors path = "email" cssClass="error"/>
 	</div>
 	
-	<div><form:label for = "state" path = "state" > State of residence</form:label>
+	<div class = "question"><form:label for = "state" path = "state" > State of residence</form:label>
 	
 	<form:select name="state" id="state"  path = "state">
 	  <form:option value="" selected="selected" >Select a State</form:option>
@@ -99,7 +101,7 @@
 	
 	
 	
-	<div>
+	<div class = "question">
 		<form:label for = "activitylevel" path = "activityLevel" > Activity Level</form:label>
 		
 		<form:select name = "activitylevel"  path = "activityLevel">
@@ -111,7 +113,7 @@
 		</form:select>
 		<form:errors path = "activityLevel" cssClass="error"/>
 	</div>
-	<div>
+	<div class = "question">
 	<input type="submit" value="Submit Your Survey">
 	</div>
 	</form:form>

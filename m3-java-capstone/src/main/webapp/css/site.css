@@ -30,7 +30,7 @@ nav ul {
 
 nav li {
 	list-style-type: none;
-	color: white;
+	color: #eaefaf;
 	margin-left: 25px;
 	margin-bottom: 10px;
 	font-size: 1.3em;
@@ -49,7 +49,6 @@ nav li a:hover {
 
 section {
 	clear: both;
-
 	width: 90%;
 	margin: 20px auto;
 	vertical-align: top;
@@ -81,12 +80,8 @@ section {
 	max-width:50%;
 }
 
-.parkDescription{
-	font-size:20px;
-}
-
 div{
-	font-size:15px;
+	font-size:20px;
 }
 
 .parkImgHP{
@@ -97,4 +92,107 @@ div{
 
 .logo{
 	max-width:50%;
+}
+
+.favoritePark{
+	display:flex;
+	flex-direction:row;
+}
+
+.imgContainerDP{
+	text-align:left;
+	display:flex;
+	flex-direction:row;
+	height:500px;
+	margin:30px;
+	margin-right:40px;
+}
+
+.parkImgDP{
+	border-radius: 7px;
+	width:35%;
+	height:100%;
+	margin-right:40px;
+}
+
+.parkStatistics span{
+	font-size:20px;
+}
+.parkStatistics{
+	margin-bottom:10px;
+}
+
+.parkQuote{
+	font-style:italic;
+	margin-bottom:10px;
+}
+
+.parkQuote span{
+	font-weight:700;
+}
+
+.allWeather {
+	display:flex;
+	flex-direction:row;
+	text-align:center;
+	justify-content:center;
+}
+
+.fourDayForecast{
+	display:flex;
+	flex-direction:row;
+	text-align:center;
+	padding-top:76.91px;
+}
+
+.todaysWeather{
+	display:flex;
+	flex-direction:column;
+	margin-right:50px;
+	text-align:center;
+}
+.todaysWeather img{
+	text-align:center;
+	border: 5px black solid;
+	
+}
+
+.dayInForecast{
+	display:flex;
+	flex-direction:column;
+}
+.temps .tempHigh{
+	margin-right:10px;
+}
+
+.fourDayForecast img{
+	border: 1px black solid;
+}
+
+label{
+	margin-right:10px;
+}
+
+.question{
+	margin:15px;
+}
+
+.detailsContainerFavorites{
+	display:flex;
+	flex-direction:column;
+	max-width:50%;
+	text-align:center;
+	width:300px;
+}
+
+.numVotes{
+	text-align:center;
+	font-weight:700;
+	font-size:100px;
+	color:#007f00;
+}
+
+#favHeader{
+	text-align:center;
+	font-size:3em;
 }
