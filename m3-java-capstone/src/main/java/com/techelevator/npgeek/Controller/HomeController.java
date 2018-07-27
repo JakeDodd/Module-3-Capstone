@@ -76,6 +76,7 @@ public class HomeController {
 		session.setAttribute("tempUnit", checkForCorrectTempUnit(request.getParameter("tempUnit")));
 		session.getAttribute("park");
 		session.getAttribute("fourDayForecast");
+		session.getAttribute("todaysForecast");
 		
 		return "detailpage";
 	}
