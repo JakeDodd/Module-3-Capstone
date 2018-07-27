@@ -58,33 +58,25 @@ public class HomeController {
 		request.getParameter("tempUnit");
 		
 		
-		List<DailyWeather> fiveDayForecast = weatherDao.getFiveDayForecastByPark(parkCode);
-		
+		List<DailyWeather> fourDayForecast = weatherDao.getFiveDayForecastByPark(parkCode);
+		DailyWeather todaysForecast = fourDayForecast.remove(0);
 		
 		HttpSession session = request.getSession();
 		
+		session.setAttribute("todaysForecast", todaysForecast);
 		session.setAttribute("park", park);
-		session.setAttribute("fiveDayForecast", fiveDayForecast);
+		session.setAttribute("fourDayForecast", fourDayForecast);
 		
 		return "detailpage";
 	}
 
 	@RequestMapping(path = "/detailpageCelcius", method = RequestMethod.GET)
 	public String showDetailPageCelcius(HttpServletRequest request) {
-//		String parkCode = request.getParameter("parkcode");
-//		Park park = parkDao.getParkByCode(parkCode);
-//		request.setAttribute("park", park);
-//		request.getParameter("tempUnit");
-		
-		
-//		List<DailyWeather> fiveDayForecast = weatherDao.getFiveDayForecastByPark(parkCode);
-//		request.setAttribute("fiveDayForecast", fiveDayForecast);
 		
 		HttpSession session = request.getSession();
-//		session.setAttribute("tempUnit", request.getParameter("tempUnit"));
 		session.setAttribute("tempUnit", checkForCorrectTempUnit(request.getParameter("tempUnit")));
 		session.getAttribute("park");
-		session.getAttribute("fiveDatForecast");
+		session.getAttribute("fourDayForecast");
 		
 		return "detailpage";
 	}
