@@ -23,7 +23,7 @@
 <section id="main-content">
 	<div>
 	<c:forEach var = "park" items = "${parkList}">
-		<div class = completeParkContainer>
+		<div class = "completeParkContainer">
 			<div class = "imageContainer">
 			<a  class = "parkImgHP"  href= "/m3-java-capstone/detailpage?parkcode=${park.parkCode}"><img  class = "parkImgHP" src = "img/parks/${park.parkCode.toLowerCase()}.jpg"/></a>
 			</div>

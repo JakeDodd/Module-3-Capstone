@@ -102,7 +102,7 @@ public class HomeController {
 			flash.addFlashAttribute(BindingResult.MODEL_KEY_PREFIX + "survey",result);
 			return "redirect:/surveypage";
 		}
-
+		surveyDao.saveSurvey(survey);
 		flash.addFlashAttribute("message","You have successfully submitted a survey");
 		return "redirect:/favoritespage";
 	}
